@@ -1,0 +1,50 @@
+{
+  "name": "@kelpjs/next",
+  "version": "2.1.11",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "example",
+    "test": "test"
+  },
+  "keywords": [
+    "kelp-next",
+    "framework"
+  ],
+  "dependencies": {
+    "@babel/core": "7",
+    "@babel/plugin-proposal-decorators": "7",
+    "@babel/plugin-proposal-object-rest-spread": "7",
+    "@babel/plugin-transform-modules-commonjs": "7",
+    "@babel/polyfill": "7",
+    "@babel/preset-typescript": "7",
+    "@babel/register": "7",
+    "glob": "latest",
+    "inject2": "latest",
+    "kelp": "latest",
+    "kelp-body": "latest",
+    "kelp-cookie": "latest",
+    "kelp-error": "latest",
+    "kelp-logger": "latest",
+    "kelp-render": "latest",
+    "kelp-send": "latest",
+    "kelp-static": "latest",
+    "negotiator": "latest",
+    "routing2": "next",
+    "semver": "latest"
+  },
+  "description": "The next full-featured javascript frameworks.",
+  "scripts": {
+    "test": "node ./test"
+  },
+  "license": "MIT",
+  "author": "Lsong",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelpjs/kelp-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kelpjs/kelp-next/issues"
+  },
+  "homepage": "https://github.com/kelpjs/kelp-next#readme"
+}
