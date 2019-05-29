@@ -1,6 +1,7 @@
 const path = require('path');
-const config = require('kanary/config');
+const config = require('./config');
 const Import = require('./import');
+const render = require('kelp-render/render');
 
 const cache = new Map();
 const { templates } = config.path;
@@ -26,18 +27,7 @@ const createRender = options => {
   options = Object.assign({}, defaultOptions, options);
   const engine = createEngine(options.renderer);
   options = Object.assign({}, options, engine);
-  const { renderer } = options;
-  return async (view, state, opts) => {
-    opts = Object.assign({}, options, opts);
-    const { templates, extension, cache } = opts;
-    const filename = path.join(templates, view + (extension && `.${extension}`));
-    var render = cache && cache.get(filename);
-    if(!render) {
-      render = renderer(filename, opts);
-      cache && cache.set(filename, render);
-    }
-    return render(state);
-  };
+  return render(options);
 };
 
 module.exports = createRender(config.render);

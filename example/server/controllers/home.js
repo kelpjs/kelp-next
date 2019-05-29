@@ -1,7 +1,8 @@
+import Controller from '../../../controller';
 
-class Home {
-  async index(params, query){
-    const { name } = query;
+class Home extends Controller {
+  async index(params){
+    const { name = 'world' } = params;
   	return 'hello ' + name;
   }
 }

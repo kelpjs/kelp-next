@@ -6,7 +6,7 @@ const Router = app => {
   app.routes = app.routes || [];
   app.router = METHODS.reduce((api, method) => {
       // app.router.get('/').to('home', 'index');
-      api[method] = path => {
+      api[method.toLowerCase()] = path => {
         return {
           to: (controller, action) => {
             app.registerRoute({ method, path, controller, action });

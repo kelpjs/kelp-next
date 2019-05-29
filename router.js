@@ -12,7 +12,7 @@ Router.route = (method = '*', path = '/', options = {}) => {
 
 // alias
 METHODS.forEach(method => {
-  Router[ method ] = Router.route.bind(null, method);
+  Router[ method.toLowerCase() ] = Router.route.bind(null, method);
 });
 
 module.exports = Router;

@@ -1,9 +1,11 @@
 const { Cookie } = require('kelp-cookie');
 const Negotiator = require('negotiator');
 const BaseResponse = require('kelp-send/response');
-const render = require('./render');
 
 class Response extends BaseResponse {
+  static create(options){
+    return new Response(options);
+  }
   constructor() {
     super();
     this.code = 200;
@@ -14,10 +16,7 @@ class Response extends BaseResponse {
   html(view, data, options) {
     this.contents.push({
       type: 'text/html',
-      fn: (req, res) => {
-        const locals = Object.assign({}, req.locals, data);
-        return res.end(render(view, locals, options));
-      }
+      fn: (req, res) => res.render(view, data, options)
     });
     return this;
   }

@@ -6,8 +6,9 @@ const config     = require('./config');
 const findPath = Module._findPath;
 Module._findPath = (request, paths, isMain) => {
   for (const key in config.path) {
-    if (request.startsWith(`@${key}/`)) {
-      request = request.replace(`@${key}/`, '');
+    const prefix = `@${key}/`;
+    if (request.startsWith(prefix)) {
+      request = request.replace(prefix, '');
       request = path.join(config.path[key], request);
       break;
     }
