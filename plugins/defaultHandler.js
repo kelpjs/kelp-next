@@ -1,8 +1,12 @@
+const NOT_FOUND = 404;
+
 module.exports = (app, options) => {
   return async (req, res, next) => {
     await next();
-    if(res.statusCode === 404){
-      res.end('Not Found');
+    const { statusCode } = res;
+    if(statusCode === NOT_FOUND) {
+      res.writeHead(statusCode);
+      res.end();
     }
   };
 };

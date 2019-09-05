@@ -7,7 +7,7 @@ const responder = require('./core/responder');
 const controller = require('./core/controller');
 const middleware = require('./core/middleware');
 
-module.exports = options => {
+module.exports = () => {
   const app = kelp();
   app.use(send);
   app.use(config(app));
