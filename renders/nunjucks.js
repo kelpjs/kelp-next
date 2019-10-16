@@ -1,14 +1,16 @@
 const fs = require('fs');
+const { promisify } = require('util');
 const nunjucks = require('nunjucks');
 
+const readFile = promisify(fs.readFile);
+
 module.exports = {
-  extension: 'ejs',
-  renderer: (filename, options = {}) => {
+  extension: 'njk',
+  renderer: async (filename, options = {}) => {
     const { encoding = 'utf8', templates } = options;
     const env = nunjucks.configure(templates, options);
-    // const view = filename.replace(templates, '');
-    const str = fs.readFileSync(filename, encoding);
-    const fn = nunjucks.compile(str, env);
-    return fn.render;
+    const str = await readFile(filename, encoding);
+    const fn = nunjucks.compile(str, env, filename);
+    return fn.render.bind(fn);
   }
 };

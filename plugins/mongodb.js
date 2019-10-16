@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 
-export default (app, options) => {
+module.exports = (app, options) => {
   let url, servers;
   ({ url, servers, ...options } = Object.assign({}, app.config.mongodb, options));
   mongoose.connect(Array.isArray(servers) ? servers.join(',') : url, options);
