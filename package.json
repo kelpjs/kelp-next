@@ -1,6 +1,6 @@
 {
   "name": "@kelpjs/next",
-  "version": "2.1.18",
+  "version": "2.1.19",
   "main": "index.js",
   "directories": {
     "doc": "docs",
@@ -22,6 +22,7 @@
     "inject2": "latest",
     "kelp": "latest",
     "kelp-body": "latest",
+    "kelp-config": "latest",
     "kelp-cookie": "latest",
     "kelp-error": "latest",
     "kelp-logger": "latest",
