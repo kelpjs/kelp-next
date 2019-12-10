@@ -1,6 +1,6 @@
 {
   "name": "@kelpjs/next",
-  "version": "2.1.17",
+  "version": "2.1.18",
   "main": "index.js",
   "directories": {
     "doc": "docs",
