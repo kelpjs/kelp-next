@@ -5,16 +5,16 @@ const Router = app => {
   const { routes: rules } = app.config;
   app.routes = app.routes || [];
   app.router = METHODS.reduce((api, method) => {
-      // app.router.get('/').to('home', 'index');
-      api[method.toLowerCase()] = path => {
-        return {
-          to: (controller, action) => {
-            app.registerRoute({ method, path, controller, action });
-          }
-        };
+    // app.router.get('/').to('home', 'index');
+    api[method.toLowerCase()] = path => {
+      return {
+        to(controller, action) {
+          return app.registerRoute({ method, path, controller, action })
+        }
       };
-      return api;
-    }, {});
+    };
+    return api;
+  }, {});
   app.registerRoute = route => {
     if (typeof route === 'string')
       route = routing.parseLine(route);

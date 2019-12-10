@@ -2,16 +2,16 @@ const glob = require('glob');
 const Controller = require('../controller');
 
 const convert = actions => {
-  if(!Array.isArray(actions))
-    return convert([ actions ]);
+  if (!Array.isArray(actions))
+    return convert([actions]);
   return actions.reduce((controller, item, i) => {
-    if(typeof item === 'object' && Object.keys(item).length === 0)
+    if (typeof item === 'object' && Object.keys(item).length === 0)
       throw new Error(`[kelp-next] controller is empty`);
     const { method = '*', url: path } = item;
-    const action = 
-      item.name || 
-      path      ||
-      item.controller && item.controller.name || 
+    const action =
+      item.name ||
+      path ||
+      item.controller && item.controller.name ||
       `action-${i}`;
     // obj like controller
     controller[action] = item.controller ? item.controller : item;
@@ -42,22 +42,22 @@ module.exports = app => {
   // controllers
   app.loadController = filename => {
     var controller = app.import(filename);
-    if(controller.__proto__ === Controller){
+    if (controller.__proto__ === Controller) {
       controller = new controller(app);
-    }else if(typeof controller === 'function'){
+    } else if (typeof controller === 'function') {
       controller = convert(controller);
-    } else if(Array.isArray(controller)){
+    } else if (Array.isArray(controller)) {
       controller = convert(controller);
-    }else if(typeof controller === 'object'){
+    } else if (typeof controller === 'object') {
       controller = convert(controller);
-    }else{
+    } else {
       throw new TypeError(`[kelp-next] controller must be a function at ${filename}`);
     }
     const name = filename.replace(`${dir}/`, '').replace(/\..+$/, '');
     return app.registerController(name, controller);
   };
-  glob(`${dir}/**/*.js`, (err, files) => {
-    if(err) return console.error('[kelp-next] load controller error:', err);
+  glob(`${dir}/**/*.{js,ts}`, (err, files) => {
+    if (err) return console.error('[kelp-next] load controller error:', err);
     files.forEach(filename => app.loadController(filename));
   });
   return async (req, res, next) => {

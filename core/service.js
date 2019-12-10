@@ -23,12 +23,12 @@ module.exports = app => {
     });
   });
   Promise
-  .all([
-    readdir(path.join(__dirname, '../services')),
-    readdir(dir)
-  ])
-  .then(files => [].concat.apply([], files))
-  .then(files => files.forEach(app.loadService.bind(app)))
+    .all([
+      readdir(path.join(__dirname, '../services')),
+      readdir(dir)
+    ])
+    .then(files => [].concat.apply([], files))
+    .then(files => files.forEach(app.loadService.bind(app)))
   return async (req, res, next) => {
     res.invoke = injector(Object.assign({
       // ...
