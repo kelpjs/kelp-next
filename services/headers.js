@@ -1,2 +1,2 @@
-module.exports = req => 
-    req.headers;
+module.exports = req =>
+  req.headers;

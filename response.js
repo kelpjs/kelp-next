@@ -3,7 +3,7 @@ const Negotiator = require('negotiator');
 const BaseResponse = require('kelp-send/response');
 
 class Response extends BaseResponse {
-  static create(options){
+  static create(options) {
     return new Response(options);
   }
   constructor() {

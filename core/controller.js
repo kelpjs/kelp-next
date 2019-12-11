@@ -62,10 +62,11 @@ module.exports = app => {
   });
   return async (req, res, next) => {
     if (!req.route) return next();
-    const controller = app.controllers[req.route.controller];
-    if (!controller) throw new Error('[kelp-next] controller not found');
-    const action = controller[req.route.action];
-    if (!action) throw new Error('[kelp-next] action not found');
+    const { controller: c, action: a } = req.route;
+    const controller = app.controllers[c];
+    if (!controller) throw new Error(`[kelp-next] controller "${c}" not found`);
+    const action = controller[a];
+    if (!action) throw new Error(`[kelp-next] action "${c}#${a}" not found`);
     res.scope = await res.invoke(action, controller);
     return next();
   }

@@ -14,7 +14,7 @@ const defaultOptions = {
 };
 
 const createEngine = name => {
-  if(typeof name === 'function')
+  if (typeof name === 'function')
     return { renderer: name };
   return Import(name, [
     path.join(__dirname, './renders')
@@ -22,7 +22,7 @@ const createEngine = name => {
 };
 
 const createRender = options => {
-  if(typeof options === 'string')
+  if (typeof options === 'string')
     options = { renderer: options };
   options = Object.assign({}, defaultOptions, options);
   const engine = createEngine(options.renderer);
