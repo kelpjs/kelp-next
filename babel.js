@@ -2,6 +2,7 @@ require('@babel/register')({
   babelrc: false,
   extensions: ['.js', '.jsx', '.ts', '.tsx'],
   presets: [
+    '@babel/preset-react',
     '@babel/preset-typescript'
   ],
   plugins: [

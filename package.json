@@ -1,6 +1,6 @@
 {
   "name": "@kelpjs/next",
-  "version": "2.1.19",
+  "version": "2.1.21",
   "main": "index.js",
   "directories": {
     "doc": "docs",
@@ -16,6 +16,7 @@
     "@babel/plugin-proposal-decorators": "7",
     "@babel/plugin-proposal-object-rest-spread": "7",
     "@babel/plugin-transform-modules-commonjs": "7",
+    "@babel/preset-react": "7",
     "@babel/preset-typescript": "7",
     "@babel/register": "7",
     "glob": "latest",
