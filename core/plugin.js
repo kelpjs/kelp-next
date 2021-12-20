@@ -1,7 +1,8 @@
 const path = require('path');
 
-module.exports = app => {
-  return app.middleware = app.config.plugins.map(plugin => {
+module.exports = (app) => {
+  const { plugins, middleware } = app.config;
+  const mws = plugins.map(plugin => {
     let name, args = [];
     if (typeof plugin === 'string')
       name = plugin;
@@ -13,4 +14,5 @@ module.exports = app => {
     ]));
     return plugin.apply(app, [app].concat(args));
   }).filter(mw => typeof mw === 'function');
+  return mws.concat(middleware);
 };

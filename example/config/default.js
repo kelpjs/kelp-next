@@ -1,6 +1,6 @@
 module.exports = {
   routes: [
-    'get /:name? => home#index'
+    'get /:name? => Home#index'
   ],
   plugins: [
     'errorHandler',

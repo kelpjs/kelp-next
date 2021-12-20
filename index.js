@@ -1,20 +1,25 @@
 const kelp = require('kelp');
-const send = require('kelp-send');
-const config = require('./core/config');
-const router = require('./core/router');
-const plugin = require('./core/plugin');
-const service = require('./core/service');
-const responder = require('./core/responder');
-const controller = require('./core/controller');
+const config = require('./config');
+const xmport = require('./import');
 
-module.exports = () => {
+const loadMiddlewares = require('./core/plugin');
+const loadControllers = require('./core/controller');
+
+const { createServer } = require('kelp-server');
+
+module.exports = async () => {
   const app = kelp();
-  app.use(send);
-  app.use(config(app));
-  app.use(router(app));
-  app.use(service(app));
-  app.use(plugin(app));
-  app.use(controller(app));
-  app.use(responder(app));
+  app.config = config;
+  app.import = xmport;
+  app.server = createServer({
+    app,
+    routes: config.routes,
+    middlewares: await loadMiddlewares(app),
+    controllers: await loadControllers(app),
+  });
+  app.start = (port = config.port) => {
+    app.server.listen(port);
+    return app;
+  };
   return app;
 };
