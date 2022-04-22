@@ -2,6 +2,7 @@
   "name": "@kelpjs/next",
   "version": "2.2.0",
   "main": "index.js",
+  "description": "The next full-featured javascript frameworks.",
   "directories": {
     "doc": "docs",
     "example": "example",
@@ -19,7 +20,7 @@
     "@babel/preset-react": "7",
     "@babel/preset-typescript": "7",
     "@babel/register": "7",
-    "inject2": "latest",
+    "inject2": "^0.0.1",
     "kelp": "latest",
     "kelp-body": "latest",
     "kelp-config": "latest",
@@ -28,14 +29,13 @@
     "kelp-logger": "latest",
     "kelp-render": "latest",
     "kelp-send": "latest",
-    "kelp-server": "latest",
+    "kelp-server": "^0.0.6",
     "kelp-static": "latest",
     "negotiator": "latest",
     "routing2": "latest",
     "semver": "latest",
     "xfind": "^0.0.4"
   },
-  "description": "The next full-featured javascript frameworks.",
   "scripts": {
     "test": "node ./test"
   },

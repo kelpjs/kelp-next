@@ -1,3 +1,2 @@
 
-module.exports = req => 
-  req.route.params;
+module.exports = req => req.params;

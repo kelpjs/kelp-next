@@ -13,6 +13,6 @@ module.exports = (app) => {
       path.join(__dirname, '../plugins')
     ]));
     return plugin.apply(app, [app].concat(args));
-  }).filter(mw => typeof mw === 'function');
-  return mws.concat(middleware);
+  })
+  return mws.concat(middleware).filter(mw => typeof mw === 'function');
 };
