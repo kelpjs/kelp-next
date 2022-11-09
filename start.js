@@ -3,8 +3,4 @@ require('./babel');
 require('./alias');
 
 const createApp = require('.');
-
-(async () => {
-    const app = await createApp();
-    app.start();
-})();
+createApp().then(app => app.start());
